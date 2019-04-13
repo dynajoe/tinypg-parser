@@ -1,0 +1,14 @@
+{
+    "search.exclude": {
+        ".DS_Store": true,
+        "src/**/*.js": true,
+        "src/**/*.js.map": true,
+        "node_modules/": true
+    },
+    "files.exclude": {
+        ".DS_Store": true,
+        "src/**/*.js": true,
+        "src/**/*.js.map": true,
+        "node_modules/": true
+    }
+}

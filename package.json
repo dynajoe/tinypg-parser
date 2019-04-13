@@ -1,0 +1,50 @@
+{
+  "name": "tinypg-parser",
+  "version": "1.0.0",
+  "description": "TinyPg utility for parsing parameterized SQL.",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rimraf './dist/' './src/**/*.js' './src/**/*.map'",
+    "build": "npm run clean && tsc",
+    "prepublish": "npm run build",
+    "test": "jest --expand --forceExit --detectOpenHandles"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testRegex": ".*\\.test\\.ts$"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/joeandaverde/tinypg-parser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joeandaverde/tinypg-parser/issues"
+  },
+  "homepage": "http://github.com/joeandaverde/tinypg-parser",
+  "author": "Joe Andaverde",
+  "keywords": [
+    "postgres",
+    "sql",
+    "db",
+    "query"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/lodash": "^4.14.123",
+    "@types/node": "^11.13.4",
+    "jest": "^24.7.1",
+    "rimraf": "^2.6.3",
+    "source-map-support": "0.5.12",
+    "ts-jest": "^24.0.2",
+    "typescript": "3.4.3"
+  }
+}
