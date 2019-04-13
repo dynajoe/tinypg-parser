@@ -1,9 +1,5 @@
 import * as T from './types'
-import * as _ from 'lodash'
-import * as Fs from 'fs'
-import * as Path from 'path'
-
-const Glob = require('glob')
+import _ from 'lodash'
 
 type ParserStateKey =
    | 'query'
