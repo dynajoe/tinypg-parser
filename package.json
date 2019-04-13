@@ -1,13 +1,13 @@
 {
   "name": "tinypg-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TinyPg utility for parsing parameterized SQL.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf './dist/' './src/**/*.js' './src/**/*.map'",
+    "clean": "rimraf ./dist",
     "build": "npm run clean && tsc",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "test": "jest --expand --forceExit --detectOpenHandles"
   },
   "jest": {

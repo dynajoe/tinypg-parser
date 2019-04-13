@@ -14,7 +14,9 @@
         "noImplicitReturns": true,
         "preserveConstEnums": true,
         "strict": true,
-        "strictNullChecks": false
+        "strictNullChecks": false,
+        "declaration": true,
+        "outDir": "./dist"
     },
     "include": [
         "src/**/*"
