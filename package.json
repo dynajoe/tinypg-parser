@@ -1,9 +1,9 @@
 {
   "name": "tinypg-parser",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "TinyPg utility for parsing parameterized SQL.",
   "main": "dist/parser.js",
-  "types": "dist/types.d.ts",
+  "types": "dist/parser.d.ts",
   "files": ["dist/**/*"],
   "scripts": {
     "clean": "rimraf ./dist",
