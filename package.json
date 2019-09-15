@@ -1,10 +1,12 @@
 {
   "name": "tinypg-parser",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "TinyPg utility for parsing parameterized SQL.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc",
@@ -35,17 +37,13 @@
   "engines": {
     "node": ">= 8.0.0"
   },
-  "dependencies": {
-    "lodash": "^4.17.11"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/lodash": "^4.14.123",
+    "@types/jest": "^24.0.18",
     "@types/node": "^11.13.4",
-    "jest": "^24.7.1",
-    "rimraf": "^2.6.3",
-    "source-map-support": "0.5.12",
-    "ts-jest": "^24.0.2",
-    "typescript": "3.4.3"
+    "jest": "^24.9.0",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.3"
   }
 }

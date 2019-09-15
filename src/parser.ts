@@ -1,5 +1,4 @@
 import * as T from './types'
-import _ from 'lodash'
 
 type ParserStateKey =
    | 'query'
@@ -39,16 +38,16 @@ export function parseSql(sql: string): T.SqlParseResult {
 
    const pushParam = () => {
       if (state.key === 'consuming-ident') {
-         if (!_.some(param_mapping, m => m.name === state.data)) {
-            const next_index = _.size(param_mapping) + 1
+         if (!param_mapping.find(m => m.name === state.data)) {
+            const next_index = param_mapping.length + 1
             param_mapping.push({ name: state.data, index: next_index })
          }
 
-         result += `$${_.find(param_mapping, m => m.name === state.data).index}`
+         result += `$${param_mapping.find(m => m.name === state.data).index}`
       }
    }
 
-   const text_length = _.size(sql)
+   const text_length = sql.length
 
    for (let i = 0; i < text_length; i++) {
       const ctx = { current: sql[i], previous: sql[i - 1], next: sql[i + 1] }

@@ -1,6 +1,5 @@
 import * as P from '../parser'
 import * as T from '../types'
-import * as _ from 'lodash'
 
 describe('parseSql', () => {
    let parse_result: T.SqlParseResult = null
@@ -146,7 +145,7 @@ describe('parseSql', () => {
    describe('quoted ident syntax', () => {
       const unaltered_items = [`SELECT "addr:city" FROM "location";`]
 
-      _.forEach(unaltered_items, sql => {
+      unaltered_items.forEach(sql => {
          test(`should not alter [${sql}]`, () => {
             expect(P.parseSql(sql).parameterized_sql).toEqual(sql)
          })
@@ -167,7 +166,7 @@ describe('parseSql', () => {
          `$$escape ' with ''$$`,
       ]
 
-      _.forEach(unaltered_items, sql => {
+      unaltered_items.forEach(sql => {
          test(`should not alter [${sql}]`, () => {
             expect(P.parseSql(sql).parameterized_sql).toEqual(sql)
          })
@@ -181,7 +180,7 @@ describe('parseSql', () => {
          `SELECT array_dims(1 || '[0:1]={2,3}'::int[]);`,
       ]
 
-      _.forEach(unaltered_items, sql => {
+      unaltered_items.forEach(sql => {
          test(`should not alter [${sql}]`, () => {
             expect(P.parseSql(sql).parameterized_sql).toEqual(sql)
          })
@@ -191,7 +190,7 @@ describe('parseSql', () => {
    describe('type cast', () => {
       const unaltered_items = [`select '1'   ::   numeric;`, `select '1'   ::  text :: numeric;`]
 
-      _.forEach(unaltered_items, sql => {
+      unaltered_items.forEach(sql => {
          test(`should not alter [${sql}]`, () => {
             expect(P.parseSql(sql).parameterized_sql).toEqual(sql)
          })
