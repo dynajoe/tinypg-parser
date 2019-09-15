@@ -43,7 +43,7 @@ export function parseSql(sql: string): T.SqlParseResult {
             param_mapping.push({ name: state.data, index: next_index })
          }
 
-         result += `$${param_mapping.find(m => m.name === state.data).index}`
+         result += `$${param_mapping.find(m => m.name === state.data)!.index}`
       }
    }
 

@@ -2,18 +2,18 @@ import * as P from '../parser'
 import * as T from '../types'
 
 describe('parseSql', () => {
-   let parse_result: T.SqlParseResult = null
+   let parse_result: T.SqlParseResult | null = null
 
    beforeAll(() => {
       parse_result = P.parseSql('SELECT * FROM users where id = :id and name = :name')
    })
 
    test('should replace the detected variables with postgres variable indexes', () => {
-      expect(parse_result.parameterized_sql).toEqual('SELECT * FROM users where id = $1 and name = $2')
+      expect(parse_result!.parameterized_sql).toEqual('SELECT * FROM users where id = $1 and name = $2')
    })
 
    test('should return the mapping of postgres vars to names', () => {
-      expect(parse_result.mapping).toEqual([{ name: 'id', index: 1 }, { name: 'name', index: 2 }])
+      expect(parse_result!.mapping).toEqual([{ name: 'id', index: 1 }, { name: 'name', index: 2 }])
    })
 
    describe('same var multiple times', () => {
@@ -22,13 +22,13 @@ describe('parseSql', () => {
       })
 
       test('should replace the detected variables with postgres variable indexes', () => {
-         expect(parse_result.parameterized_sql).toEqual(
+         expect(parse_result!.parameterized_sql).toEqual(
             'SELECT * FROM users where id = $1 and blah = $2 and name = $1 and test = $3 and something = $3'
          )
       })
 
       test('should return the mapping of postgres vars to names', () => {
-         expect(parse_result.mapping).toEqual([{ name: 'name', index: 1 }, { name: 'blah', index: 2 }, { name: 'test', index: 3 }])
+         expect(parse_result!.mapping).toEqual([{ name: 'name', index: 1 }, { name: 'blah', index: 2 }, { name: 'test', index: 3 }])
       })
    })
 
@@ -38,11 +38,11 @@ describe('parseSql', () => {
       })
 
       test('should replace the detected variables with postgres variable indexes', () => {
-         expect(parse_result.parameterized_sql).toEqual('SELECT * FROM users where id = $1::int and name = $2::text')
+         expect(parse_result!.parameterized_sql).toEqual('SELECT * FROM users where id = $1::int and name = $2::text')
       })
 
       test('should return the mapping of postgres vars to names', () => {
-         expect(parse_result.mapping).toEqual([{ name: 'id', index: 1 }, { name: 'name', index: 2 }])
+         expect(parse_result!.mapping).toEqual([{ name: 'id', index: 1 }, { name: 'name', index: 2 }])
       })
    })
 
@@ -52,7 +52,7 @@ describe('parseSql', () => {
       })
 
       test('should be ignored', () => {
-         expect(parse_result.parameterized_sql).toEqual("SELECT * FROM users where created_on > '2011-01-01 10:00:00'::timestamptz")
+         expect(parse_result!.parameterized_sql).toEqual("SELECT * FROM users where created_on > '2011-01-01 10:00:00'::timestamptz")
       })
    })
 
@@ -134,11 +134,11 @@ describe('parseSql', () => {
       })
 
       test('should replace the detected variables with postgres variable indexes', () => {
-         expect(parse_result.parameterized_sql).toEqual('SELECT * FROM users where id = $1 and name = $2')
+         expect(parse_result!.parameterized_sql).toEqual('SELECT * FROM users where id = $1 and name = $2')
       })
 
       test('should return the mapping of postgres vars to names', () => {
-         expect(parse_result.mapping).toEqual([{ name: 'id.foo', index: 1 }, { name: 'name.bar', index: 2 }])
+         expect(parse_result!.mapping).toEqual([{ name: 'id.foo', index: 1 }, { name: 'name.bar', index: 2 }])
       })
    })
 
